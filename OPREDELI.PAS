@@ -1,0 +1,47 @@
+PROGRAM OPDL;
+VAR
+M :ARRAY[1..10,1..10] OF REAL;
+D, DALL,X1,X2,X3,X4 :REAL;
+X,I,J :INTEGER;
+
+PROCEDURE OPRED(M1,M2,M3,M4,M5,M6,M7,M8,M9 :REAL);
+BEGIN
+D := M1*(M5*M9-M6*M8)-M2*(M4*M9-M6*M7)+M3*(M4*M8-M7*M5);
+END;
+BEGIN
+
+WRITE('êÄáåÖêçéëíú èé X à Y = ');
+READLN(X);
+
+FOR I:=1 TO X DO
+BEGIN
+FOR J:=1 TO X DO
+BEGIN
+WRITE('[X',I,',',J,'] = ');
+READLN(M[I,J]);
+END;
+END;
+
+IF X = 4 THEN
+BEGIN
+OPRED(M[2,2],M[2,3],M[2,4],M[3,2],M[3,3],M[3,4],M[4,2],M[4,3],M[4,4]);
+X1 := D;
+
+OPRED(M[2,1],M[2,3],M[2,4],M[3,1],M[3,3],M[3,4],M[4,1],M[4,3],M[4,4]);
+X2 := D;
+
+OPRED(M[2,1],M[2,2],M[2,4],M[3,1],M[3,2],M[3,4],M[4,1],M[4,2],M[4,4]);
+X3 := D;
+
+OPRED(M[2,1],M[2,2],M[2,3],M[3,1],M[3,2],M[3,3],M[4,1],M[4,2],M[4,3]);
+X4 := D;
+
+DALL := M[1,1]*X1-M[1,2]*X2+M[1,3]*X3-M[1,4]*X4;
+
+END;
+
+OPRED(M[1,1],M[1,2],M[1,3],M[2,1],M[2,2],M[2,3],M[3,1],M[3,1],M[3,3]);
+
+WRITELN('D = ',D:2:2);
+READLN;
+END.

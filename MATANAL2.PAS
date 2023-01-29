@@ -1,0 +1,20 @@
+PROGRAM MATANALIZ2;
+{$N+,E+}
+USES CRT;
+VAR
+ANS :EXTENDED;
+X,A :LONGINT;
+BEGIN
+CLRSCR;
+A := 1;
+ANS := 0;
+
+FOR X := 1 TO 106 DO
+BEGIN
+ANS := ANS + (1 / ( A * (A+2) * (A+4) * (A+6) ) );
+GOTOXY(10,10);
+WRITE(X,' - ',A,' - ',ANS:20:20,'  ');
+A := A+2;
+END;
+
+END.
